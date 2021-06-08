@@ -1,0 +1,3 @@
+UnitTests
+src/*.o
+src/tests/*.o
