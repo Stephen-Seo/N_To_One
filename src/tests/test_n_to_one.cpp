@@ -160,7 +160,7 @@ TEST_CASE("n=2 objects long", "n_to_one") {
     for(y = 0; y < 4; ++y) {
         for(x = 0; x < 5; ++x) {
             idx = two_to_one(x, y, 5);
-            REQUIRE(idx <= 5*4);
+            REQUIRE(idx < 5*4);
             CHECK(indices[idx].x == x);
             CHECK(indices[idx].y == y);
         }
@@ -185,7 +185,7 @@ TEST_CASE("n=3 objects long", "n_to_one") {
         for(y = 0; y < 4; ++y) {
             for(x = 0; x < 5; ++x) {
                 idx = three_to_one(x, y, z, 5, 4);
-                REQUIRE(idx <= 5*4*3);
+                REQUIRE(idx < 5*4*3);
                 CHECK(indices[idx].x == x);
                 CHECK(indices[idx].y == y);
                 CHECK(indices[idx].z == z);
@@ -215,7 +215,7 @@ TEST_CASE("n=4 objects long", "n_to_one") {
             for(y = 0; y < 4; ++y) {
                 for(x = 0; x < 5; ++x) {
                     idx = four_to_one(x, y, z, i, 5, 4, 3);
-                    REQUIRE(idx <= 5*4*3*2);
+                    REQUIRE(idx < 5*4*3*2);
                     CHECK(indices[idx].x == x);
                     CHECK(indices[idx].y == y);
                     CHECK(indices[idx].z == z);
@@ -377,7 +377,7 @@ TEST_CASE("n=2 objects long long", "n_to_one") {
     for(y = 0; y < 4; ++y) {
         for(x = 0; x < 5; ++x) {
             idx = two_to_one_l(x, y, 5);
-            REQUIRE(idx <= 5*4);
+            REQUIRE(idx < 5*4);
             CHECK(indices[idx].x == x);
             CHECK(indices[idx].y == y);
         }
@@ -402,7 +402,7 @@ TEST_CASE("n=3 objects long long", "n_to_one") {
         for(y = 0; y < 4; ++y) {
             for(x = 0; x < 5; ++x) {
                 idx = three_to_one_l(x, y, z, 5, 4);
-                REQUIRE(idx <= 5*4*3);
+                REQUIRE(idx < 5*4*3);
                 CHECK(indices[idx].x == x);
                 CHECK(indices[idx].y == y);
                 CHECK(indices[idx].z == z);
@@ -432,7 +432,7 @@ TEST_CASE("n=4 objects long long", "n_to_one") {
             for(y = 0; y < 4; ++y) {
                 for(x = 0; x < 5; ++x) {
                     idx = four_to_one_l(x, y, z, i, 5, 4, 3);
-                    REQUIRE(idx <= 5*4*3*2);
+                    REQUIRE(idx < 5*4*3*2);
                     CHECK(indices[idx].x == x);
                     CHECK(indices[idx].y == y);
                     CHECK(indices[idx].z == z);
