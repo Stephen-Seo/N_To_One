@@ -7,6 +7,7 @@ struct Indices {
     unsigned long long y;
     unsigned long long z;
     unsigned long long i;
+    unsigned long long counter;
 };
 
 TEST_CASE("two_to_one", "n_to_one") {
@@ -155,6 +156,7 @@ TEST_CASE("n=2 objects long", "n_to_one") {
         one_to_two(idx, &x, &y, 5);
         indices[idx].x = x;
         indices[idx].y = y;
+        indices[idx].counter = 0;
     }
 
     for(y = 0; y < 4; ++y) {
@@ -163,7 +165,12 @@ TEST_CASE("n=2 objects long", "n_to_one") {
             REQUIRE(idx < 5*4);
             CHECK(indices[idx].x == x);
             CHECK(indices[idx].y == y);
+            ++indices[idx].counter;
         }
+    }
+
+    for(idx = 0; idx < 5*4; ++idx) {
+        CHECK(indices[idx].counter == 1);
     }
 }
 
@@ -179,6 +186,7 @@ TEST_CASE("n=3 objects long", "n_to_one") {
         indices[idx].x = x;
         indices[idx].y = y;
         indices[idx].z = z;
+        indices[idx].counter = 0;
     }
 
     for(z = 0; z < 3; ++z) {
@@ -189,8 +197,13 @@ TEST_CASE("n=3 objects long", "n_to_one") {
                 CHECK(indices[idx].x == x);
                 CHECK(indices[idx].y == y);
                 CHECK(indices[idx].z == z);
+                ++indices[idx].counter;
             }
         }
+    }
+
+    for(idx = 0; idx < 5*4*3; ++idx) {
+        CHECK(indices[idx].counter == 1);
     }
 }
 
@@ -208,6 +221,7 @@ TEST_CASE("n=4 objects long", "n_to_one") {
         indices[idx].y = y;
         indices[idx].z = z;
         indices[idx].i = i;
+        indices[idx].counter = 0;
     }
 
     for(i = 0; i < 2; ++i) {
@@ -220,9 +234,14 @@ TEST_CASE("n=4 objects long", "n_to_one") {
                     CHECK(indices[idx].y == y);
                     CHECK(indices[idx].z == z);
                     CHECK(indices[idx].i == i);
+                    ++indices[idx].counter;
                 }
             }
         }
+    }
+
+    for(idx = 0; idx < 5*4*3*2; ++idx) {
+        CHECK(indices[idx].counter == 1);
     }
 }
 
@@ -372,6 +391,7 @@ TEST_CASE("n=2 objects long long", "n_to_one") {
         one_to_two_l(idx, &x, &y, 5);
         indices[idx].x = x;
         indices[idx].y = y;
+        indices[idx].counter = 0;
     }
 
     for(y = 0; y < 4; ++y) {
@@ -380,7 +400,12 @@ TEST_CASE("n=2 objects long long", "n_to_one") {
             REQUIRE(idx < 5*4);
             CHECK(indices[idx].x == x);
             CHECK(indices[idx].y == y);
+            ++indices[idx].counter;
         }
+    }
+
+    for(idx = 0; idx < 5*4; ++idx) {
+        CHECK(indices[idx].counter == 1);
     }
 }
 
@@ -396,6 +421,7 @@ TEST_CASE("n=3 objects long long", "n_to_one") {
         indices[idx].x = x;
         indices[idx].y = y;
         indices[idx].z = z;
+        indices[idx].counter = 0;
     }
 
     for(z = 0; z < 3; ++z) {
@@ -406,8 +432,13 @@ TEST_CASE("n=3 objects long long", "n_to_one") {
                 CHECK(indices[idx].x == x);
                 CHECK(indices[idx].y == y);
                 CHECK(indices[idx].z == z);
+                ++indices[idx].counter;
             }
         }
+    }
+
+    for(idx = 0; idx < 5*4*3; ++idx) {
+        CHECK(indices[idx].counter == 1);
     }
 }
 
@@ -425,6 +456,7 @@ TEST_CASE("n=4 objects long long", "n_to_one") {
         indices[idx].y = y;
         indices[idx].z = z;
         indices[idx].i = i;
+        indices[idx].counter = 0;
     }
 
     for(i = 0; i < 2; ++i) {
@@ -437,8 +469,13 @@ TEST_CASE("n=4 objects long long", "n_to_one") {
                     CHECK(indices[idx].y == y);
                     CHECK(indices[idx].z == z);
                     CHECK(indices[idx].i == i);
+                    ++indices[idx].counter;
                 }
             }
         }
+    }
+
+    for(idx = 0; idx < 5*4*3*2; ++idx) {
+        CHECK(indices[idx].counter == 1);
     }
 }
